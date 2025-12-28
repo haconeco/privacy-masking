@@ -1,0 +1,22 @@
+[project]
+name = "privacy-masking"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "boto3>=1.42.17",
+    "mediapipe>=0.10.31",
+    "numpy>=2.2.6",
+    "opencv-python>=4.11.0.86",
+    "pandas>=2.3.3",
+    "pyarrow>=22.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "."

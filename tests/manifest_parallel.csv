@@ -1,0 +1,2 @@
+source_uri,output_uri,status,error_message
+/Users/haconeco/project/adadas/privacy-masking/tests/data/test_face.jpg,tests/out_parallel/test_face.jpg,DONE,
