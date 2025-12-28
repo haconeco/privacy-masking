@@ -13,27 +13,14 @@ class BBox:
 
 class FaceDetector:
     def __init__(self, model_path: str, device: str = 'CPU', min_detection_confidence: float = 0.5):
-        base_options = python.BaseOptions(model_asset_path=model_path)
-        
-        # Configure Delegate
-        # Note: Delegate setup in python tasks is implicit via BaseOptions? 
-        # Actually BaseOptions has delegate argument in recent versions.
-        # But 'CPU' is default. 'GPU' requires proper env.
-        # Use python.BaseOptions.Delegate.GPU if available, else CPU.
-        
-        # We will assume CPU for implementation safety unless specified.
-        # The prompt says: BaseOptions(delegate=GPU)
-        
+        delegate = python.BaseOptions.Delegate.CPU
         if device == 'GPU':
-             # Try to set GPU delegate
-             # This might fail on Mac if not supported, so we wrap in try/except or rely on user env.
-             # In python tasks API, there isn't a direct enum for GPU in all versions?
-             # Let's check documentation or common usage.
-             # Actually, creating BaseOptions(delegate=python.BaseOptions.Delegate.GPU)
-             pass 
-             # For now, I will stick to default (CPU) or minimal config, 
-             # as I cannot easily verify GPU config on this environment.
-             # I'll leave a TODO for GPU.
+            delegate = python.BaseOptions.Delegate.GPU
+        
+        base_options = python.BaseOptions(
+            model_asset_path=model_path,
+            delegate=delegate
+        )
         
         options = vision.FaceDetectorOptions(
             base_options=base_options,

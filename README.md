@@ -59,6 +59,25 @@ uv run python src/main.py \
 uv run python src/main.py --manifest run.csv ...
 ```
 
+### 4. GPUの使用（Advanced）
+MediaPipeのGPU推論を利用することで、顔検出の高速化が期待できます。
+デフォルトはCPU動作ですが、`--device GPU` を指定することでGPUモードに切り替わります。
+
+```bash
+uv run python src/main.py \
+  --manifest run.csv \
+  ... \
+  --device GPU
+```
+
+> [!IMPORTANT]
+> **前提環境について**:
+> GPUモードを使用するには、MediaPipeのGPU Delegateがサポートされている環境が必要です。
+> - 推奨: **Linux環境 (Ubuntuなど) + NVIDIA GPU driver + CUDA/CuDNN**
+> - macOS: 環境によっては動作しない、またはCPUフォールバックが発生する場合があります。
+> 
+> クラウドインスタンス（AWS g4dn等）で実行する場合に特に有効です。
+
 ## アーキテクチャと設計意図
 
 本システムは「大量の画像を、安価な計算機リソースで、確実に処理しきる」ことを目的に設計されています。
