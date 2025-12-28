@@ -19,3 +19,7 @@
 
 - [x] **性能検証 (Performance Verification)**
     - [x] Parallel pipeline smoke test
+
+- [ ] **機能追加 (Future Improvements)**
+    - [ ] **ナンバープレート検出**: MMDetection / Detectron2 等を用いた自前学習モデル等の組み込み
+    - [ ] **EXIF回転対応の強化**: 現在はPipelineの一部で考慮されているが、検出器手前での正規化を徹底する
